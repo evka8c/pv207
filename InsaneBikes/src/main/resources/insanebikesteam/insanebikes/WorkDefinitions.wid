@@ -1,0 +1,177 @@
+import org.drools.core.process.core.datatype.impl.type.StringDataType;
+import org.drools.core.process.core.datatype.impl.type.ObjectDataType;
+import org.drools.core.process.core.datatype.impl.type.ListDataType;
+import org.drools.core.process.core.datatype.impl.type.IntegerDataType;
+import org.drools.core.process.core.datatype.impl.type.BooleanDataType;
+
+[
+  [
+    "name" : "Email",
+    "parameters" : [
+      "From" : new StringDataType(),
+      "To" : new StringDataType(),
+      "Subject" : new StringDataType(),
+      "Body" : new StringDataType()
+    ],
+    "displayName" : "Email",
+    "icon" : "defaultemailicon.gif"
+  ],
+
+  [
+    "name" : "Log",
+    "parameters" : [
+      "Message" : new StringDataType()
+    ],
+    "displayName" : "Log",
+    "icon" : "defaultlogicon.gif"
+  ],
+
+  [
+    "name" : "Rest",
+    "parameters" : [
+        "Url" : new StringDataType(),
+        "Method" : new StringDataType(),
+        "ConnectTimeout" : new StringDataType(),
+        "ReadTimeout" : new StringDataType(),
+        "Username" : new StringDataType(),
+        "Password" : new StringDataType()
+    ],
+    "results" : [
+        "Result" : new ObjectDataType(),
+    ],
+    "displayName" : "REST",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "CheckUserExists",
+    "parameters" : [
+        "BaseUrl" : new StringDataType(),
+        "User" : new ObjectDataType()
+    ],
+    "displayName" : "CheckUserExists",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "FetchStand",
+    "parameters" : [
+      "Url" : new StringDataType()
+    ],
+    "results" : [
+        "bikeStand" : new ObjectDataType()
+    ],
+    "displayName" : "FetchStand",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "FetchBike",
+    "parameters" : [
+      "Url" : new StringDataType()
+    ],
+    "results" : [
+        "currentBike" : new ObjectDataType()
+    ],
+    "displayName" : "FetchBike",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "AssignBikeToStand",
+    "parameters" : [
+      "closestStand" : new ObjectDataType(),
+      "currentBike" : new ObjectDataType()
+    ],
+    "results" : [
+        "closestStand" : new ObjectDataType(),
+        "standUrl" : new StringDataType()
+    ],
+    "displayName" : "Assign bike to stand",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "CalculatePrice",
+    "parameters" : [
+        "currentBike" : new ObjectDataType()
+    ],
+    "results" : [
+        "calculatedPrice" : new IntegerDataType()
+    ],
+    "displayName" : "Calculate price",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "ChargeCreditCard",
+    "parameters" : [
+      "currentUser" : new ObjectDataType(),
+      "calculatedPrice" : new IntegerDataType()
+    ],
+    "results" : [
+        "currentUser" : new ObjectDataType(),
+        "currentUserUrl" : new StringDataType()
+    ],
+    "displayName" : "Charge credit card",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "LockUser",
+    "parameters" : [
+      "currentUser" : new ObjectDataType(),
+    ],
+    "results" : [
+        "currentUser" : new ObjectDataType(),
+        "currentUserUrl" : new StringDataType()
+    ],
+    "displayName" : "Lock User",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "GenerateRegistrationCode",
+    "parameters" : [
+        "BaseUrl" : new StringDataType(),
+        "UserCreationJsonResponse" : new StringDataType(),
+        "User" : new ObjectDataType()
+    ],
+    "results" : [
+        "UserUrl" : new StringDataType(),
+        "UpdatedUser" : new ObjectDataType(),
+        "UserEmail" : new StringDataType(),
+        "RegistrationCode" : new StringDataType()
+    ],
+    "displayName" : "GenerateRegistrationCode",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "ActivateUser",
+    "parameters" : [
+        "User" : new ObjectDataType()
+    ],
+    "results" : [
+        "UpdatedUser" : new ObjectDataType()
+    ],
+    "displayName" : "ActivateUser",
+    "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "Login",
+    "parameters" : [
+        "Url" : new StringDataType(),
+        "User" : new StringDataType(),
+        "Password" : new StringDataType()
+    ],
+    "results" : [
+        "LoggedUser" : new ObjectDataType(),
+        "LoginStatus" : new StringDataType()
+    ],
+    "displayName" : "Login",
+    "icon" : "defaultservicenodeicon.png"
+  ]
+
+]
